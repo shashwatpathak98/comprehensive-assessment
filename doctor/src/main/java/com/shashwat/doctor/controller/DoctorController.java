@@ -5,6 +5,7 @@ import com.shashwat.doctor.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.Path;
 import java.util.List;
 
 @RestController
@@ -20,9 +21,9 @@ public class DoctorController {
         return service.getAllDoctors();
     }
 
-    @GetMapping("/findById")
+    @GetMapping("/findById/{registrationNumber}")
     @CrossOrigin("*")
-    public Doctor getDocById(@RequestParam String registrationNumber) {
+    public Doctor getDocById(@PathVariable String registrationNumber) {
         return service.getDoctorById(registrationNumber);
     }
 
@@ -38,9 +39,9 @@ public class DoctorController {
         return service.updateDoctor(doctor);
     }
 
-    @DeleteMapping("/deleteDoctor")
+    @DeleteMapping("/deleteDoctor/{registrationNumber}")
     @CrossOrigin("*")
-    public Boolean deleteDoc(@RequestParam String registrationNumber) {
+    public Boolean deleteDoc(@PathVariable String registrationNumber) {
         return service.deleteDoctor(registrationNumber);
     }
 }

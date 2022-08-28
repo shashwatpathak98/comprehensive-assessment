@@ -26,8 +26,8 @@ public class PatientService {
         if (patientToUpdate != null) {
             if (patient.getName() != null) patientToUpdate.setName(patient.getName());
             if (patient.getVisitedDoctor() != null) patientToUpdate.setVisitedDoctor(patient.getVisitedDoctor());
-            if (patient.getVisitDate() != null) patientToUpdate.setVisitDate(patientToUpdate.getVisitDate());
-            if (patient.getPrescription() != null) patientToUpdate.setPrescription(patientToUpdate.getPrescription());
+            if (patient.getVisitDate() != null) patientToUpdate.setVisitDate(patient.getVisitDate());
+            if (patient.getPrescription() != null) patientToUpdate.setPrescription(patient.getPrescription());
             repo.save(patientToUpdate);
         }
         return patientToUpdate;
