@@ -1,1 +1,108 @@
-<p>doctor-register-form works!</p>
+<div class="container p-3 m-12 justify-content-center">
+  <div class="card shadow p-5">
+    <div class="card-body w-50 m-auto">
+      <h5 class="card-title mb-2 text-center">Doctor Registration Form</h5>
+      <h6 class="card-subtitle mb-4 text-muted text-center">
+        Please fill all the fields
+      </h6>
+      <div class="row">
+        <form (onSubmit)="onSubmit()" #registerdoctor="ngForm">
+          <div class="mb-3">
+            <label for="registrationNumber" class="form-label">Registration Number</label>
+            <input
+              type="text"
+              [(ngModel)]="doctor.registrationNumber"
+              class="form-control"
+              id="registrationNumber"
+              name="registrationNumber"
+              placeholder="Please enter registration number"
+              required
+              #registrationNumber="ngModel"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Doctor Name</label>
+            <input
+              type="text"
+              [(ngModel)]="doctor.name"
+              class="form-control"
+              id="name"
+              name="name"
+              placeholder="Please enter doctor name"
+              required
+              #name="ngModel"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="age" class="form-label">Doctor Age</label>
+            <input
+              type="number"
+              [(ngModel)]="doctor.age"
+              class="form-control"
+              id="age"
+              name="age"
+              placeholder="Please enter doctor age"
+              required
+              min="10"
+              max="99"
+              #age="ngModel"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <div class="col d-grid gap-2 d-md-flex">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="gender1"
+                  value="Male"
+                  [(ngModel)]="doctor.gender"
+                  #gender1="ngModel"
+                  [(ngModel)]="doctor.gender"
+                />
+                <label class="form-check-label" for="gender1">Male</label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="gender2"
+                  value="Female"
+                  #gender2="ngModel"
+                  [(ngModel)]="doctor.gender"
+                />
+                <label class="form-check-label" for="gender2">Female</label>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Doctor Specialization</label>
+            <input
+              type="text"
+              [(ngModel)]="doctor.specialization"
+              class="form-control"
+              id="specialization"
+              name="specialization"
+              placeholder="Please enter doctor specialization"
+              required
+              #specialization="ngModel"
+            />
+          </div>
+          <div class="text-center">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="onSubmit()"
+              data-bs-dismiss="modal"
+            >
+              Register Doctor
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

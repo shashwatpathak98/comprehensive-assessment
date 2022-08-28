@@ -8,6 +8,8 @@ import { PatientRegisterFormComponent } from './component/patient-register-form/
 import { DoctorRegisterFormComponent } from './component/doctor-register-form/doctor-register-form.component';
 import { SearchDoctorInfoComponent } from './component/search-doctor-info/search-doctor-info.component';
 import { SearchPatientInfoComponent } from './component/search-patient-info/search-patient-info.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,7 @@ import { SearchPatientInfoComponent } from './component/search-patient-info/sear
     SearchDoctorInfoComponent,
     SearchPatientInfoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
