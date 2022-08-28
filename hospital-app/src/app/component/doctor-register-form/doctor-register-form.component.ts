@@ -21,5 +21,7 @@ export class DoctorRegisterFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(): void {}
+  onSubmit(): void {
+    console.log(this.doctor);
+  }
 }

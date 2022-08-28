@@ -1,1 +1,54 @@
-<p>search-patient-info works!</p>
+<div class="container p-3 m-12 justify-content-center">
+  <div class="card shadow p-5">
+    <div class="card-body w-50 m-auto">
+      <h5 class="card-title mb-2 text-center">Search Doctor Details</h5>
+      <h6 class="card-subtitle mb-4 text-muted text-center">
+        Please select the doctor name
+      </h6>
+      <div class="row">
+        <form (onSubmit)="onSubmit()" #searchDoctor="ngForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Patient Name</label>
+            <input
+              type="text"
+              [(ngModel)]="patient.name"
+              class="form-control"
+              id="name"
+              name="name"
+              placeholder="Please enter patient name"
+              required
+              #name="ngModel"
+            />
+          </div>
+          <div class="text-center mb-5">
+            <button type="button" class="btn btn-primary" (click)="onSubmit()">
+              Fetch Details
+            </button>
+          </div>
+          <div class="p-3 m-3 text-left">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Visited Doctor</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Prescription</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ patientInfo.id }}</td>
+                  <td>{{ patientInfo.name }}</td>
+                  <td>{{ patientInfo.visitedDoctor }}</td>
+                  <td>{{ patientInfo.visitDate }}</td>
+                  <td>{{ patientInfo.prescription }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
