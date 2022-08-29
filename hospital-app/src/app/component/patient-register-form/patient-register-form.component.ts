@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Doctor } from 'src/app/entity/doctor';
 import { Patient } from 'src/app/entity/patient';
 import { DoctorService } from 'src/app/service/doctor-service.service';
@@ -15,7 +15,6 @@ export class PatientRegisterFormComponent implements OnInit {
   docList!: Doctor[];
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private doctorService: DoctorService,
     private patientService: PatientService

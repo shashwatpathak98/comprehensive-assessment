@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Doctor } from 'src/app/entity/doctor';
 import { DoctorService } from 'src/app/service/doctor-service.service';
 
@@ -14,8 +13,6 @@ export class SearchDoctorInfoComponent implements OnInit {
   selectedDoctor!: Doctor;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     private doctorService: DoctorService
   ) {
     this.doctorList = [];
