@@ -35,10 +35,10 @@
             >
               <option selected>--Select--</option>
               <option
-                [value]="doc"
+                [value]="doc.registrationNumber"
                 *ngFor="let doc of docList"
               >
-                {{ doc }}
+                {{ doc.name }}
               </option>
             </select>
           </div>

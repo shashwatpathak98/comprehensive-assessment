@@ -4,6 +4,7 @@ import com.shashwat.patient.entity.Patient;
 import com.shashwat.patient.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -13,8 +14,11 @@ public class PatientService {
     @Autowired
     PatientRepository repo;
 
+    @Autowired
+    RestTemplate restTemplate;
+
     public Patient savePatient(Patient patient) {
-        return repo.save(patient);
+       return repo.save(patient);
     }
 
     public List<Patient> getAllPatients() {

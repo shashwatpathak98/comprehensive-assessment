@@ -35,6 +35,7 @@ export class DoctorRegisterFormComponent implements OnInit {
   }
 
   goToHomePage(): void {
+    alert('Doctor sucessfully enrolled!');
     this.router.navigate(['/home']);
   }
 }

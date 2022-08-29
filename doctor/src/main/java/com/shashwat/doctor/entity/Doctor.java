@@ -21,6 +21,5 @@ public class Doctor {
     private Integer age ;
     private String gender;
     private String specialization;
-    private Integer patientsAttended;
-
+    private Integer patientsAttended = 0;
 }

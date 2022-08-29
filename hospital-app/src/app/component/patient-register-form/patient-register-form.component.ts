@@ -12,7 +12,7 @@ import { PatientService } from 'src/app/service/patient-service.service';
 })
 export class PatientRegisterFormComponent implements OnInit {
   patient!: Patient;
-  docList!: string[];
+  docList!: Doctor[];
 
   constructor(
     private route: ActivatedRoute,
@@ -29,7 +29,7 @@ export class PatientRegisterFormComponent implements OnInit {
     this.doctorService.getAllDoctors().subscribe({
       next: (docList) => {
         console.log('docList: ', docList);
-        this.docList = docList.map((doc: Doctor) => doc.name);
+        this.docList = docList.map((doc: Doctor) => doc);
       },
       error: (error) => {
         alert('Something went wrong during registering doctor!');
@@ -52,6 +52,7 @@ export class PatientRegisterFormComponent implements OnInit {
   }
 
   goToHomePage(): void {
+    alert('Appointment created successfully!');
     this.router.navigate(['/home']);
   }
 }
