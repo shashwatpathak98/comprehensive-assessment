@@ -25,6 +25,18 @@ public class PatientController {
         return service.getAllPatients();
     }
 
+    @GetMapping("/findPatientById/{id}")
+    @CrossOrigin("*")
+    public Patient findPatientById(@PathVariable Long id) {
+        return service.getPatientById(id);
+    }
+
+    @GetMapping("/findPatientByName/{name}")
+    @CrossOrigin("*")
+    public Patient findPatientByName(@PathVariable String name) {
+        return service.getPatientByName(name);
+    }
+
     @PutMapping("/updatePatient")
     @CrossOrigin("*")
     public Patient updatePatient(@RequestBody Patient patient) {

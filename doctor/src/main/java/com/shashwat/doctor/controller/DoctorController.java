@@ -27,6 +27,12 @@ public class DoctorController {
         return service.getDoctorById(registrationNumber);
     }
 
+    @GetMapping("/findByName/{name}")
+    @CrossOrigin("*")
+    public Doctor getDocByName(@PathVariable String name) {
+        return service.getDoctorByName(name);
+    }
+
     @PostMapping("/saveDoctor")
     @CrossOrigin("*")
     public Doctor saveDoctor(@RequestBody Doctor doctor) {

@@ -23,5 +23,18 @@ export class DoctorRegisterFormComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.doctor);
+    this.service.registerDoctor(this.doctor).subscribe({
+      next: () => {
+        this.goToHomePage();
+      },
+      error: (error) => {
+        alert('Something went wrong during registering doctor!');
+        console.log(error);
+      },
+    });
+  }
+
+  goToHomePage(): void {
+    this.router.navigate(['/home']);
   }
 }

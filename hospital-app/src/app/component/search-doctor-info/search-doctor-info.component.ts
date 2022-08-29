@@ -16,16 +16,36 @@ export class SearchDoctorInfoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: DoctorService
+    private doctorService: DoctorService
   ) {
-    this.doctorList = [''];
+    this.doctorList = [];
     this.doctorInfo = new Doctor();
     this.selectedDoctor = new Doctor();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('fetching doctor list');
+    this.doctorService.getAllDoctors().subscribe({
+      next: (docList) => {
+        console.log('docList: ', docList);
+        this.doctorList = docList.map((doc: Doctor) => doc.name);
+      },
+      error: (error) => {
+        alert('Something went wrong during registering doctor!');
+        console.log(error);
+      },
+    });
+  }
 
   onSubmit(): void {
     console.log(this.selectedDoctor);
+    this.doctorService.findDoctorByName(this.selectedDoctor).subscribe({
+      next: (data: Doctor) => {
+        this.doctorInfo = data;
+      },
+      error: (error) => {
+        alert('Error in fetching doctor information!');
+      },
+    });
   }
 }

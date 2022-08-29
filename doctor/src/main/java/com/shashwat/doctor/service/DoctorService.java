@@ -25,6 +25,10 @@ public class DoctorService {
         return repo.findById(registrationNumber).orElse(null);
     }
 
+    public Doctor getDoctorByName(String name) {
+        return repo.getDoctorByName(name);
+    }
+
     public Doctor updateDoctor(Doctor doctor) {
         Doctor docToUpdate = repo.findById(doctor.getRegistrationNumber()).orElse(null);
         if (docToUpdate != null) {

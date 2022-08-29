@@ -42,4 +42,12 @@ public class PatientService {
         }
         return status;
     }
+
+    public Patient getPatientByName(String name) {
+        return repo.findPatientByName(name);
+    }
+
+    public Patient getPatientById(Long id) {
+        return repo.findById(id).orElse(null);
+    }
 }
