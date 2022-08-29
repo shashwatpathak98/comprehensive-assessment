@@ -41,11 +41,27 @@ export class PatientRegisterFormComponent implements OnInit {
     console.log(this.patient);
     this.patientService.registerPatient(this.patient).subscribe({
       next: () => {
+        this.updateDoctorAppointment();
         this.goToHomePage();
       },
       error: (error) => {
         console.log(error);
         alert('Something went wrong during booking appointment!');
+      },
+    });
+  }
+
+  updateDoctorAppointment(): void {
+    this.doctorService.findDoctorById(this.patient.visitedDoctor).subscribe({
+      next: (docToUpdate) => {
+        if (docToUpdate) {
+          docToUpdate.patientsAttended += 1;
+          console.log('DocUpdate: ', docToUpdate);
+          this.doctorService.updateDoctor(docToUpdate).subscribe({
+            next: (data) => console.log('Updated: ', data),
+            error: (error) => console.log(error),
+          });
+        }
       },
     });
   }

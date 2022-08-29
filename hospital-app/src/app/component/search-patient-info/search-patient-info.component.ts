@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient } from 'src/app/entity/patient';
+import { DoctorService } from 'src/app/service/doctor-service.service';
 import { PatientService } from 'src/app/service/patient-service.service';
 
 @Component({
@@ -11,7 +12,10 @@ export class SearchPatientInfoComponent implements OnInit {
   patient!: Patient;
   patientInfo!: Patient;
 
-  constructor(private patientService: PatientService) {
+  constructor(
+    private patientService: PatientService,
+    private doctorService: DoctorService
+  ) {
     this.patient = new Patient();
     this.patientInfo = new Patient();
   }
@@ -28,10 +32,20 @@ export class SearchPatientInfoComponent implements OnInit {
           return;
         }
         this.patientInfo = data;
+        this.fetchDoctorName(data);
       },
       error: (error) => {
         alert('Something went wrong during patient information fetch!');
         console.log(error);
+      },
+    });
+  }
+
+  fetchDoctorName(data: Patient): void {
+    console.log('fetched patient: ', data);
+    this.doctorService.findDoctorById(data.visitedDoctor).subscribe({
+      next: (doc) => {
+        this.patientInfo = { ...this.patientInfo, visitedDoctor: doc.name };
       },
     });
   }
